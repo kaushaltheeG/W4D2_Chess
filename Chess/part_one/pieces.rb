@@ -6,6 +6,7 @@ require_relative 'pawn'
 require_relative 'bishop'
 require_relative 'knight'
 require_relative 'null_piece'
+require_relative 'display'
 
 
 

@@ -37,45 +37,49 @@ class Board
         self[end_pos] = piece
     end 
 
+    def display
+        display = Display.new(@grid)
+        display.render 
+    end 
     #def vaild_moves
 
     def fill_with_pawn
         (0...@grid[1].length).each do |i|
-            @grid[1][i] = Piece.new(:black, self, [1, i])
+            @grid[1][i] = Pawn.new(:black, self, [1, i],:P)
         end
 
         (0...@grid[6].length).each do |i|
-            @grid[6][i] = Piece.new(:white, self, [6, i])
+            @grid[6][i] = Pawn.new(:white, self, [6, i],:P)
         end
     end
     
     def fill_with_rook
         #pos [0,0] [0,7] [7,7] [7,0]
-        self[[0,7]] = Piece.new(:black, self, [0, 7])
-        self[[0,0]] = Piece.new(:black, self, [0, 0])
-        self[[7,7]] = Piece.new(:white, self, [7, 7])
-        self[[7,0]]  = Piece.new(:white, self, [7, 0])
+        self[[0,7]] = Rook.new(:black, self, [0, 7],:R)
+        self[[0,0]] = Rook.new(:black, self, [0, 0], :R)
+        self[[7,7]] = Rook.new(:white, self, [7, 7], :R)
+        self[[7,0]]  = Rook.new(:white, self, [7, 0], :R)
     end
 
     def fill_with_knight
-        self[[0, 6]] = Piece.new(:black, self, [0, 6])
-        self[[0, 1]] = Piece.new(:black, self, [0, 1])
-        self[[7, 6]] = Piece.new(:white, self, [7, 6])
-        self[[7, 1]] = Piece.new(:white, self, [7, 1])
+        self[[0, 6]] = Knight.new(:black, self, [0, 6], :Kn)
+        self[[0, 1]] = Knight.new(:black, self, [0, 1], :Kn)
+        self[[7, 6]] = Knight.new(:white, self, [7, 6], :Kn)
+        self[[7, 1]] = Knight.new(:white, self, [7, 1], :Kn)
     end
 
     def fill_with_bishop
-        self[[0, 2]] = Piece.new(:black, self, [0, 2])
-        self[[0, 5]] = Piece.new(:black, self, [0, 5])
-        self[[7, 2]] = Piece.new(:white, self, [7, 2])
-        self[[7, 5]] = Piece.new(:white, self, [7, 5])
+        self[[0, 2]] = Bishop.new(:black, self, [0, 2], :B)
+        self[[0, 5]] = Bishop.new(:black, self, [0, 5], :B)
+        self[[7, 2]] = Bishop.new(:white, self, [7, 2], :B)
+        self[[7, 5]] = Bishop.new(:white, self, [7, 5], :B)
     end
 
     def fill_with_royalty
-        self[[0, 3]] = Piece.new(:black, self, [0, 3])
-        self[[0, 4]] = Piece.new(:black, self, [0, 4])
-        self[[7, 3]] = Piece.new(:white, self, [7, 3])
-        self[[7, 4]] = Piece.new(:white, self, [7, 4])
+        self[[0, 3]] = King.new(:black, self, [0, 3],:K)
+        self[[0, 4]] = Queen.new(:black, self, [0, 4],:Q)
+        self[[7, 3]] = King.new(:white, self, [7, 3],:K)
+        self[[7, 4]] = Queen.new(:white, self, [7, 4],:Q)
     end
     
     def fill_null_piece
