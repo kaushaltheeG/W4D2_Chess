@@ -37,8 +37,8 @@ module Slideable
 
         while true 
             # include valid_move?
+            new_pos = [(row + dx),(col + dy)]
             if (x >= 0 && x < 8) && (y >= 0 && y < 8) && !possible_moves.include?(new_pos)
-                new_pos = [(row + dx),(col + dy)]
                 if board[new_pos].nil? 
                     possible_moves << new_pos
                 elsif new_piece.color != self.color

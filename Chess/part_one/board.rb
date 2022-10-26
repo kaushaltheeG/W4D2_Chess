@@ -2,20 +2,10 @@ require_relative 'pieces'
 
 class Board
     attr_reader :grid
-    
-    # def fill_out_pos
-    #     index_array = [0, 1, 6, 7]
-    #     i = index_array.shift
-    #     # until i.nil?
-    #         if i == 0
-    #             self[i, 0] = :p 
-    #         end
-    # end
 
-    
     def initialize
         @grid = Array.new(8) {Array.new(8)}
-        @null_piece = NullPiece
+        @null_piece = NullPiece.instance
     end
 
     def fill_out_pos
@@ -24,6 +14,7 @@ class Board
        self.fill_with_rook
        self.fill_with_bishop
        self.fill_with_royalty
+       self.fill_null_piece
     end
 
     def [](pos)
@@ -87,7 +78,15 @@ class Board
         self[[7, 4]] = Piece.new(:white, self, [7, 4])
     end
     
-    
+    def fill_null_piece
+
+        (2..5).each do |x|
+            (0..7).each do |y| 
+                self[[x, y]] = @null_piece
+            end 
+        end
+
+    end
     
 
 end 
