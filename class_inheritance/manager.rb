@@ -2,7 +2,8 @@ require_relative 'employee'
 
 class Manager < Employee
 
-    attr_reader :name, :title, :salary, :boss, :employees
+    attr_reader :name, :title, :salary, :boss
+    attr_accessor :employees
 
     def initialize(name, title, salary, boss)
         super
@@ -11,7 +12,7 @@ class Manager < Employee
 
     def bonus(multiplier)
 
-        total_salary = @employees.inject(0) { |acc, worker| acc += employee.salary } 
+        total_salary = @employees.inject(0) { |acc, worker| acc += worker.salary } 
 
         bonus = total_salary * multiplier
     end
