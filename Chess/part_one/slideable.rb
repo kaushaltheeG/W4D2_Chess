@@ -26,6 +26,7 @@ module Slideable
         moves
     end
 
+    private 
     def grow_unblocked_moves_in_dir(dx, dy)
         row, col = pos
     
@@ -35,6 +36,7 @@ module Slideable
         possible_moves = []
 
         while true 
+            # include valid_move?
             if (x >= 0 && x < 8) && (y >= 0 && y < 8) && !possible_moves.include?(new_pos)
                 new_pos = [(row + dx),(col + dy)]
                 if board[new_pos].nil? 
@@ -52,7 +54,4 @@ module Slideable
         end 
         possible_moves
     end 
-
-
-
 end

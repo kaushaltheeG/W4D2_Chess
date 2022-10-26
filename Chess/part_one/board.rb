@@ -15,8 +15,7 @@ class Board
     
     def initialize
         @grid = Array.new(8) {Array.new(8)}
-        # @null_piece = NullPiece.new
-        
+        @null_piece = NullPiece
     end
 
     def fill_out_pos
@@ -46,6 +45,8 @@ class Board
         piece.pos = end_pos
         self[end_pos] = piece
     end 
+
+    #def vaild_moves
 
     def fill_with_pawn
         (0...@grid[1].length).each do |i|

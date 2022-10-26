@@ -1,8 +1,11 @@
 require_relative "piece"
 
+
 class NullPiece < Piece
-    def initialize(color,board,pos,symbol)
-        super
-        @symbol = symbol
+    include Singleton 
+    attr_reader :color, :symbol
+    def initialize
+        @color = nil 
+        @symbol = nil 
     end
 end 
