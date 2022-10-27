@@ -28,13 +28,14 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
-        raise "no piece found at this start position" if self[start_pos].nil?
-        raise "end position is not empty" if !self[end_pos].nil?
+        raise "no piece found at this start position" if self[start_pos] == @null_piece
+        raise "end position is not empty" if !self[end_pos] = @null_piece
 
         piece = self[start_pos]
-        self[start_pos] = nil 
+        self[start_pos] = @null_piece 
         piece.pos = end_pos
         self[end_pos] = piece
+        true 
     end 
 
     def display

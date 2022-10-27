@@ -9,4 +9,11 @@ class Piece
         @pos = pos #arr
     end 
 
+    def valid_move?(pos)
+        x = pos[0]
+        y = pos[1]
+
+        (x >= 0 && x < 8) && (y >= 0 && y < 8)
+    end
+
 end 
